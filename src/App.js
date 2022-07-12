@@ -4,7 +4,7 @@ import ListComponent from "./ListComponent";
 function App() {
 
   // const url = 'http://127.0.0.1:3001/api'
-  const url = 'http://node.tdudkowski.usermd.net/api'
+  const url = 'https://node.tdudkowski.usermd.net/'
 
   const [data, setData] = useState(null);
   const [openAdd, setOpenAdd] = useState(false);

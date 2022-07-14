@@ -1,30 +1,20 @@
-
 import { useState  } from "react";
-
+import FormComponent from "./FormComponent"
 // const url = 'http://127.0.0.1:3001/api'
-const url = 'https://node.tdudkowski.usermd.net/api'
+const url = 'http://127.0.0.1:3002/api'
 
 const ListComponent = (props) => {
-
 
     const thisElement = props.data.filter(el =>  el._id === props.id)
     const thisElementArr = []
     Object.entries(thisElement[0]).map(el => thisElementArr.push(el))
-
-    const [openUpdate, setOpenUpdate] = useState(false);
+    
     const [openDelete, setOpenUDelete] = useState(false);
     const [content, setContent] = useState(thisElement[0]);
+    const [openUpdate, setOpenUpdate] = useState(false);
 
-    // INPUT CHANGE
-    const handleInputChange = (e, id) => {
-        const keyname = Object.keys(content)[id]
-        content[keyname] = e.target.value
-        setContent(content)
-        console.log(content)
-            }
-
-    // ITEM UPDATE
-    const handleItemUpdate = async () => {
+  // ITEM UPDATE
+  const handleItemUpdate = async () => {
     try {
         const res = await fetch(url, {
     method: "PUT",
@@ -32,7 +22,7 @@ const ListComponent = (props) => {
     });
     if (res.status === 201) {
     setOpenUpdate(false)
-    console.log(res.body)
+    setContent(content)
     return res;
   } else {
     console.log("Some error occured " + res.status);
@@ -42,8 +32,8 @@ const ListComponent = (props) => {
   console.log(err);
 } 
 }
-
-    // ITEM DELETE
+ 
+// ITEM DELETE
     const handleItemDelete = async (elid) => {
     try {
       const res = await fetch(url, {
@@ -58,16 +48,15 @@ const ListComponent = (props) => {
   }
 
     return (
-      <li>
-      {thisElement[0].author} "<em>{thisElement[0].title}</em>" ({thisElement[0].year})
-      
+      <li className="bookListElement">
+      {thisElement[0].author} <em>"{thisElement[0].title}"</em> ({thisElement[0].year})
+     
       {openUpdate ? <div>
-                <ul>
-                    {Object.entries(thisElement[0]).map((el, id) =>  <li key={id}><em>{el[0]}: </em> <input defaultValue={el[1]} editable="true" onChange={(e) => handleInputChange(e, id)} /></li>)}
-                </ul>
-        <button onClick={() => handleItemUpdate(content)}>Update</button> | <button onClick={() => setOpenUpdate(false)}>Close update</button></div> :  <div><button onClick={() => setOpenUpdate(true)}>Show update</button></div>}
+        <FormComponent props={content} setOpenUpdate={setOpenUpdate} handleItemUpdate={handleItemUpdate} />           
+        <button onClick={() => handleItemUpdate(content)}>Update book data (your changes saving)</button> | <button onClick={() => setOpenUpdate(false)}>Close update panel</button></div> :  <div><button onClick={() => setOpenUpdate(true)}>Open update panel</button></div>}
 
-        {openDelete ? <div>Do you want to delete this item? <button onClick={() => handleItemDelete(thisElement[0]['_id'])}>Delete</button> | <button onClick={() => setOpenUDelete(false)}>Close delete</button></div> :  <div><button onClick={() => setOpenUDelete(true)}>Show delete</button></div>}
+        {openDelete ? <div>Do you want to delete this item? <button onClick={() => handleItemDelete(thisElement[0]['_id'])}>Delete</button> | <button onClick={() => setOpenUDelete(false)}>Close delete panel</button></div> :  <div><button onClick={() => setOpenUDelete(true)}>Open delete panel</button></div>}
+        
       </li>
     )
   }

@@ -1,0 +1,6 @@
+.App {max-width:1200px; margin:0 auto;}
+/* ul {list-style-type: none; padding-left:0;} */
+pre {box-shadow: 1px 2px 3px #dda; padding:1rem;}
+button {margin: .1rem .2rem;}
+.bookListElement {box-shadow: 0 0 3px 1px #dda; margin:.5rem 0; padding: .2rem; border-radius:5px; }
+.bookListElement input {margin: .2rem; padding: .2rem; width: 20rem;}

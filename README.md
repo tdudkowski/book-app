@@ -34,6 +34,8 @@ All items can be edited and deleted, changes are implemented immediately.
 
 - TypeScript
 - Testing
-- Correct data input with validation
+- Proper data input with validation
+- Multiple lists
+- Composer of data format (item fields)
 - Search
 - Notes

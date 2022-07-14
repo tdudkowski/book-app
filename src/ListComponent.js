@@ -1,7 +1,8 @@
 import { useState  } from "react";
 import FormComponent from "./FormComponent"
+
+const url = 'https://node.tdudkowski.usermd.net/api'
 // const url = 'http://127.0.0.1:3001/api'
-const url = 'http://127.0.0.1:3002/api'
 
 const ListComponent = (props) => {
 

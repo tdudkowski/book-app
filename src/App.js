@@ -16,7 +16,7 @@ function App() {
     "year": 1315
   }
 
-  // const url = 'http://127.0.0.1:3002/api'
+  // const url = 'http://127.0.0.1:3001/api'
   const url = 'https://node.tdudkowski.usermd.net/api'
 
   const [data, setData] = useState(null);
@@ -94,7 +94,7 @@ function App() {
 
 <ul>
   <li>minimalism</li>
-  <li>delayed optimisation</li>
+  <li>delayed optimization</li>
   <li>as few techniques / libraries as possible, low code</li>
   <li>best practices, and standards, it's a learning experiment</li>
   <li>accessibility and usability</li>
@@ -105,8 +105,15 @@ function App() {
 
 <ul>
   <li>Database: MongoDB (on my hosting at <a href="https://www.mydevil.net/">MyDevil.net</a>)</li>
-  <li>Backend: Node.JS + mongodb and dotenv libraries (as above)</li>
+  <li>Backend: Node.JS + mongodb and dotenv libraries (hosted the same as above)</li>
   <li>Frontend: React + gh-pages on GitHub (<a href="https://github.com/tdudkowski/book-app/tree/main">repo</a>).</li>
+</ul>
+
+<p>Todo</p>
+
+<ul>
+  <li>Programming: TypeScript, testing.</li>
+  <li>Features: proper data input with validation, multiple lists, composer of data format (item fields), search, notes.</li>
 </ul>
       
       <h2>Add a Book</h2>
